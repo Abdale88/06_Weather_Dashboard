@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    flex-direction: column;
+    line-height: 2.3;
+  }
+
+  h1{
+      display: flex;
+      justify-content: center;
+      background-color: rgb(54, 54, 191);
+      color: white;
+      font-size: 2rem;
+  }
+
+  main{
+      display: flex;
+      flex-direction: column;
+      margin-left: 5px;
+  }
+  
+  #input-field{
+      padding: 0.5rem;
+      margin-bottom: 0.8rem;
+  }
+
+  #search{
+    padding: 0.5rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    background-color: rgb(93, 86, 164);
+    color: white;
+}
