@@ -15,6 +15,20 @@ function fetchFunc(){
         console.log("this is data >> ", data);
     })
 
+     arrayEl.push(inputField.value);
+     console.log(arrayEl);
+
+    for(i = 0; i < arrayEl.length; i++){
+        
+        var Mydiv = document.createElement("div");
+        Mydiv.classList = 'list-item flex-row justify-space-between align-center';
+
+        var mySpan = document.createElement("span");
+        mySpan.textContent = arrayEl[i];
+        Mydiv.appendChild(mySpan);
+       
+    }
+    stateName.appendChild(Mydiv);
     })
 
 }
