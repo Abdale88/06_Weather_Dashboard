@@ -16,19 +16,22 @@ function fetchFunc(){
     })
 
      arrayEl.push(inputField.value);
-     console.log(arrayEl);
+    
 
     for(i = 0; i < arrayEl.length; i++){
         
-        var Mydiv = document.createElement("div");
-        Mydiv.classList = 'list-item flex-row justify-space-between align-center';
+        var styleDivEl = document.createElement("div");
+        styleDivEl.classList = 'list-item flex-row justify-space-between align-center';
+        styleDivEl.setAttribute("style", 
+        "background-color: rgb(93, 86, 164); margin: 3px; border-radius: 0.5rem; color: white; text-align: center;");
 
-        var mySpan = document.createElement("span");
-        mySpan.textContent = arrayEl[i];
-        Mydiv.appendChild(mySpan);
+
+        var inputStateName = document.createElement("span");
+        inputStateName.textContent = arrayEl[i];
+        styleDivEl.appendChild(inputStateName);
        
     }
-    stateName.appendChild(Mydiv);
+    stateName.appendChild(styleDivEl);
     })
 
 }
