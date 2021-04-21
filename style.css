@@ -14,19 +14,40 @@ body {
 
   main{
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       margin-left: 5px;
+      margin-right: 5px;
   }
   
   #input-field{
       padding: 0.5rem;
+      padding-left: 5rem;
+      padding-right: 5rem;
       margin-bottom: 0.8rem;
   }
 
   #search{
     padding: 0.5rem;
-    padding-left: 4rem;
-    padding-right: 4rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    border-radius: 0.5rem;
     background-color: rgb(93, 86, 164);
     color: white;
+}
+
+/* #states{
+    padding: 0.5rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    border-radius: 0.5rem;
+    margin-top: 20px;
+    background-color: rgb(93, 86, 164);
+    color: white;
+} */
+.container{
+
+    border: blue 0.1rem solid;
+    margin-left: 2rem;
+    margin-top: 2px;
+    padding-right: 50%;
 }
