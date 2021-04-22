@@ -2,7 +2,7 @@ var searchEl = document.querySelector("#search");
 var inputField = document.querySelector("#input-field");
 var stateName = document.querySelector("#states");
 
-arrayEl = [];
+var arrayEl = [];
 var savedCities;
 
 function fetchFunc(){
@@ -16,42 +16,48 @@ function fetchFunc(){
         console.log("this is data >> ", data);
     })
 
-     arrayEl.push(inputField.value);
+    arrayEl.push(inputField.value);
     
+     myFunc();
 
-    for(i = 0; i < arrayEl.length; i++){
-        
-        var styleDivEl = document.createElement("div");
-        styleDivEl.classList = 'list-item flex-row justify-space-between align-center';
-        styleDivEl.setAttribute("style", 
-               "background-color: rgb(93, 86, 164); margin: 3px; border-radius: 0.5rem; color: white; text-align: center;");
+    })
+   
+}
 
 
-        var inputStateName = document.createElement("span");
-        inputStateName.textContent = arrayEl[i];
-        styleDivEl.appendChild(inputStateName);
-       
-    }
-    stateName.appendChild(styleDivEl);
-    localStorage.setItem("cities", JSON.stringify(arrayEl))
+function myFunc(){
+     localStorage.setItem("cities", JSON.stringify(arrayEl))
 
     savedCities = JSON.parse(localStorage.getItem("cities")) ;
     console.log("saves>> ", savedCities)
-    document.getElementById("states").value = savedCities;
-
-
-    })
-    
+    document.getElementById("states").textContent = savedCities; 
+    console.log("savedd>> ", savedCities[0]);
 }
-  
-
-
    
 
 
 
 
 
+
+
+
+
+
+// for(i = 0; i < arrayEl.length; i++){
+        
+    //     var styleDivEl = document.createElement("div");
+    //     styleDivEl.classList = 'list-item flex-row justify-space-between align-center';
+    //     styleDivEl.setAttribute("style", 
+    //            "background-color: rgb(93, 86, 164); margin: 3px; border-radius: 0.5rem; color: white; text-align: center;");
+
+
+    //     var inputStateName = document.createElement("span");
+    //     inputStateName.textContent = arrayEl[i];
+    // styleDivEl.appendChild(inputStateName);
+       
+    // }
+    // stateName.appendChild(styleDivEl);
 
 
 
