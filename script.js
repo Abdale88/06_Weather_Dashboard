@@ -23,7 +23,7 @@ function fetchFunc(){
         var styleDivEl = document.createElement("div");
         styleDivEl.classList = 'list-item flex-row justify-space-between align-center';
         styleDivEl.setAttribute("style", 
-        "background-color: rgb(93, 86, 164); margin: 3px; border-radius: 0.5rem; color: white; text-align: center;");
+               "background-color: rgb(93, 86, 164); margin: 3px; border-radius: 0.5rem; color: white; text-align: center;");
 
 
         var inputStateName = document.createElement("span");
@@ -32,9 +32,42 @@ function fetchFunc(){
        
     }
     stateName.appendChild(styleDivEl);
+
+    localStorage.setItem("state", stateName.textContent);
+
+    document.getElementById("input-field").value = localStorage.getItem(stateName.value);
+
+
     })
 
 }
 
+
+  // var forms = stateName.textContent
+    // localStorage.getItem("states", stateName.textContent);
+    //  console.log('this is forms>> ', forms);
+
+
+// // 
+
+// localStorage.setItem("state", stateName.textContent);
+//     document.getElementById("states").value = localStorage.getItem(stateName).value;
+
+
+// event.preventDefault();
+//     var button = event.target;
+//     var parent = button.closest("div.row");
+//     var id = parent.id;
+//     var textEl = parent.querySelector("textarea").value;
+  
+//     storage4hr =  textEl;
+    
+//     localStorage.setItem("storage4hr", storage4hr); 
+   
+  
+//   });
+  
+//   document.getElementById("4hr-Textarea").value = localStorage.getItem("storage4hr");
+// // 
 
 fetchFunc();
