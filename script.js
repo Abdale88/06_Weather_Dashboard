@@ -3,6 +3,7 @@ var inputField = document.querySelector("#input-field");
 var stateName = document.querySelector("#states");
 
 arrayEl = [];
+var savedCities;
 
 function fetchFunc(){
     searchEl.addEventListener("click", function(event){
@@ -32,16 +33,30 @@ function fetchFunc(){
        
     }
     stateName.appendChild(styleDivEl);
+    localStorage.setItem("cities", JSON.stringify(arrayEl))
 
-    localStorage.setItem("state", stateName.textContent);
-
-    document.getElementById("input-field").value = localStorage.getItem(stateName.value);
+    savedCities = JSON.parse(localStorage.getItem("cities")) ;
+    console.log("saves>> ", savedCities)
+    document.getElementById("states").value = savedCities;
 
 
     })
-
+    
 }
+  
 
+
+   
+
+
+
+
+
+
+
+
+
+   
 
   // var forms = stateName.textContent
     // localStorage.getItem("states", stateName.textContent);
