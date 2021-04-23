@@ -1,94 +1,61 @@
 var searchEl = document.querySelector("#search");
-var inputField = document.querySelector("#input-field");
+var cityName = document.querySelector("#input-field");
 var stateName = document.querySelector("#states");
 
-var arrayEl = [];
-var savedCities;
+var cityEl = document.querySelector("#cityName");
+var tempEl = document.querySelector("#temp");
+var windEl = document.querySelector("wind");
+var humidityEl = document.querySelector("humidity");
+var uvIndex = document.querySelector("uvi");
 
-function fetchFunc(){
+var savedCities = [];
+var localStorageEl;
+
+
+
+// fetch("https://api.openweathermap.org/data/2.5/forecast?q="+ cityName.value + "&units=imperial"+"&appid=b47242be396209257701a75398843e35&cnt=6")
+
+function mainFunction(){
     searchEl.addEventListener("click", function(event){
         event.preventDefault();
-        fetch("https://api.openweathermap.org/data/2.5/forecast?q="+ inputField.value + "&appid=b47242be396209257701a75398843e35&cnt=6")
+
+        currentCity();
+    if(savedCities.indexOf(cityName.value) === -1){
+        savedCities.push(cityName.value);
+        localStorage.setItem("cities", JSON.stringify(savedCities))
+    }
+    else{
+        return;
+    }
+    var listEl = document.createElement("li");
+    listEl.textContent = cityName.value 
+    stateName.appendChild(listEl);
+
+    listEl.setAttribute("style", "background: red; margin: 10px; border: blue 3px solid; border-radius: 0.5rem; text-align: center")   
+    })
+}
+
+function currentCity(){
+    fetch("https://api.openweathermap.org/data/2.5/weather?q="+ cityName.value + "&units=imperial"+"&appid=b47242be396209257701a75398843e35")
     .then(function(response){
         return response.json();
     })
     .then(function(data){
         console.log("this is data >> ", data);
     })
+}
 
-    arrayEl.push(inputField.value);
+function getValues(){
+    savedCities = JSON.parse(localStorage.getItem("cities")) || [] ;
     
-     myFunc();
-
-    })
-   
-}
-
-
-function myFunc(){
-     localStorage.setItem("cities", JSON.stringify(arrayEl))
-
-    savedCities = JSON.parse(localStorage.getItem("cities")) ;
-    console.log("saves>> ", savedCities)
-    document.getElementById("states").textContent = savedCities; 
-    console.log("savedd>> ", savedCities[0]);
-}
-   
-
-
-
-
-
-
-
-
-
-
-// for(i = 0; i < arrayEl.length; i++){
-        
-    //     var styleDivEl = document.createElement("div");
-    //     styleDivEl.classList = 'list-item flex-row justify-space-between align-center';
-    //     styleDivEl.setAttribute("style", 
-    //            "background-color: rgb(93, 86, 164); margin: 3px; border-radius: 0.5rem; color: white; text-align: center;");
-
-
-    //     var inputStateName = document.createElement("span");
-    //     inputStateName.textContent = arrayEl[i];
-    // styleDivEl.appendChild(inputStateName);
+    for(i = 0; i < savedCities.length; i++){
+        var localStorageEl = document.createElement("li");
+        localStorageEl.textContent = savedCities[i];
+        stateName.appendChild(localStorageEl);
+        localStorageEl.setAttribute("style", "background: red; margin: 10px;  border-radius: 0.5rem; text-align: center")
        
-    // }
-    // stateName.appendChild(styleDivEl);
+    }
+}
 
-
-
-
-   
-
-  // var forms = stateName.textContent
-    // localStorage.getItem("states", stateName.textContent);
-    //  console.log('this is forms>> ', forms);
-
-
-// // 
-
-// localStorage.setItem("state", stateName.textContent);
-//     document.getElementById("states").value = localStorage.getItem(stateName).value;
-
-
-// event.preventDefault();
-//     var button = event.target;
-//     var parent = button.closest("div.row");
-//     var id = parent.id;
-//     var textEl = parent.querySelector("textarea").value;
-  
-//     storage4hr =  textEl;
-    
-//     localStorage.setItem("storage4hr", storage4hr); 
-   
-  
-//   });
-  
-//   document.getElementById("4hr-Textarea").value = localStorage.getItem("storage4hr");
-// // 
-
-fetchFunc();
+getValues();
+mainFunction();
