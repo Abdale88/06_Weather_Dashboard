@@ -2,11 +2,12 @@ var searchEl = document.querySelector("#search");
 var cityName = document.querySelector("#input-field");
 var stateName = document.querySelector("#states");
 
+var containerEl = document.querySelector("#container")
 var cityEl = document.querySelector("#cityName");
 var tempEl = document.querySelector("#temp");
-var windEl = document.querySelector("wind");
-var humidityEl = document.querySelector("humidity");
-var uvIndex = document.querySelector("uvi");
+var windEl = document.querySelector("#wind");
+var humidityEl = document.querySelector("#humidity");
+var uvIndex = document.querySelector("#uvi");
 
 var savedCities = [];
 var localStorageEl;
@@ -34,7 +35,7 @@ function mainFunction(){
     listEl.textContent = cityName.value 
     stateName.appendChild(listEl);
 
-    listEl.setAttribute("style", "background: red; margin: 10px; border: blue 3px solid; border-radius: 0.5rem; text-align: center")   
+    listEl.setAttribute("style", "background: red; margin: 10px;  border: blue 3px solid; border-radius: 0.5rem; text-align: center")   
     })
 }
 
@@ -45,7 +46,12 @@ function currentCity(){
     })
     .then(function(data){
         console.log("this is data ", data);
-        cityEl.textContent = data.name + " city name";
+
+        containerEl.setAttribute("style", "padding-right: 50%; margin: 10px; border: black 3px solid");
+        cityEl.textContent = data.name  + data.weather[0].icon;
+        tempEl.textContent = "Temp: " + data.main.temp + " °F";
+        humidityEl.textContent = "Humidity: " + data.main.humidity + " %";
+        windEl.textContent = "Wind: " + data.wind.speed + " MPH";
     })
    
     
@@ -78,7 +84,12 @@ function getData(){
                 })
                 .then(function(data){
                  console.log("this is  current data ", data);
+
+                 containerEl.setAttribute("style", "padding-right: 50%; margin: 10px;  border: black 3px solid");
                  cityEl.textContent = data.name;
+                 tempEl.textContent = "Temp: " + data.main.temp + " °F";
+                 windEl.textContent = "Wind: " + data.wind.speed + " MPH";
+                 windEl.textContent = "Wind: " + data.wind.speed + " MPH";
                   })
             }
         }
