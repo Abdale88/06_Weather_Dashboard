@@ -33,6 +33,7 @@ function mainFunction(){
     searchEl.addEventListener("click", function(event){
         event.preventDefault();
         currentCity();
+        fiveDayFunc();
 
     if(savedCities.indexOf(cityName.value) === -1){
         savedCities.push(cityName.value);
@@ -81,6 +82,131 @@ function currentCity(){
    
     
 }
+
+
+
+
+
+function fiveDayFunc(){
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q="+ cityName.value + "&units=imperial"+"&appid=b47242be396209257701a75398843e35&cnt=6")
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(data){
+        console.log("five day ", data)
+        fiveDayForecast.textContent = "5-Day Forecast";
+        var day1Lst1 = document.createElement('li');
+        var day1Lst2 = document.createElement('li');
+        var day1Lst3 = document.createElement('li');
+        var day1Lst4 = document.createElement('li');
+        var day1Lst5 = document.createElement('li');
+
+        day1Lst1.textContent = "Time: " + data.list[1].dt_txt;
+        dayOne.appendChild(day1Lst1);
+        day1Lst2.textContent = "icon: " + data.list[1].weather[0].icon;
+        dayOne.appendChild(day1Lst2);
+
+        day1Lst3.textContent = "Temp: " + data.list[1].main.temp + " °F";
+        dayOne.appendChild(day1Lst3);
+
+        day1Lst4.textContent = "Wind: " + data.list[1].wind.speed + " MPH";
+        dayOne.appendChild(day1Lst4);
+
+        day1Lst5.textContent = "Humidity: " + data.list[1].main.humidity + " %";
+        dayOne.appendChild(day1Lst5);
+       
+//============================day 1
+        var day2Lst1 = document.createElement('li');
+        var day2Lst2 = document.createElement('li');
+        var day2Lst3 = document.createElement('li');
+        var day2Lst4 = document.createElement('li');
+        var day2Lst5 = document.createElement('li');
+        
+        day2Lst1.textContent = "Time: " + data.list[2].dt_txt;
+        dayTwo.appendChild(day2Lst1);
+        day2Lst2.textContent = "icon: " + data.list[2].weather[0].icon;
+        dayTwo.appendChild(day2Lst2);
+
+        day2Lst3.textContent = "Temp: " + data.list[2].main.temp + " °F";
+        dayTwo.appendChild(day2Lst3);
+
+        day2Lst4.textContent = "Wind: " + data.list[2].wind.speed + " MPH";
+        dayTwo.appendChild(day2Lst4);
+
+        day2Lst5.textContent = "Humidity: " + data.list[2].main.humidity + " %";
+        dayTwo.appendChild(day2Lst5);
+
+        //================day 2
+        var day3Lst1 = document.createElement('li');
+        var day3Lst2 = document.createElement('li');
+        var day3Lst3 = document.createElement('li');
+        var day3Lst4 = document.createElement('li');
+        var day3Lst5 = document.createElement('li');
+        
+
+        day3Lst1.textContent = "Time: " + data.list[3].dt_txt;
+        dayThree.appendChild(day3Lst1);
+        day3Lst2.textContent = "icon: " + data.list[3].weather[0].icon;
+        dayThree.appendChild(day3Lst2);
+
+        day3Lst3.textContent = "Temp: " + data.list[3].main.temp + " °F";
+        dayThree.appendChild(day3Lst3);
+
+        day3Lst4.textContent = "Wind: " + data.list[3].wind.speed + " MPH";
+        dayThree.appendChild(day3Lst4);
+
+        day3Lst5.textContent = "Humidity: " + data.list[3].main.humidity + " %";
+        dayThree.appendChild(day3Lst5);
+
+        // ========== day 
+
+        var day4Lst1 = document.createElement('li');
+        var day4Lst2 = document.createElement('li');
+        var day4Lst3 = document.createElement('li');
+        var day4Lst4 = document.createElement('li');
+        var day4Lst5 = document.createElement('li');
+        
+
+        day4Lst1.textContent = "Time: " + data.list[4].dt_txt;
+        dayFour.appendChild(day4Lst1);
+        day4Lst2.textContent = "icon: " + data.list[4].weather[0].icon;
+        dayFour.appendChild(day4Lst2);
+
+        day4Lst3.textContent = "Temp: " + data.list[4].main.temp + " °F";
+        dayFour.appendChild(day4Lst3);
+
+        day4Lst4.textContent = "Wind: " + data.list[4].wind.speed + " MPH";
+        dayFour.appendChild(day4Lst4);
+
+        day4Lst5.textContent = "Humidity: " + data.list[4].main.humidity + " %";
+        dayFour.appendChild(day4Lst5);
+        // ==== day 4
+
+        var day5Lst1 = document.createElement('li');
+        var day5Lst2 = document.createElement('li');
+        var day5Lst3 = document.createElement('li');
+        var day5Lst4 = document.createElement('li');
+        var day5Lst5 = document.createElement('li');
+        
+
+        day5Lst1.textContent = "Time: " + data.list[5].dt_txt;
+        dayFive.appendChild(day5Lst1);
+        day5Lst2.textContent = "icon: " + data.list[4].weather[0].icon;
+        dayFive.appendChild(day5Lst2);
+
+        day5Lst3.textContent = "Temp: " + data.list[4].main.temp + " °F";
+        dayFive.appendChild(day5Lst3);
+
+        day5Lst4.textContent = "Wind: " + data.list[4].wind.speed + " MPH";
+        dayFive.appendChild(day5Lst4);
+
+        day5Lst5.textContent = "Humidity: " + data.list[4].main.humidity + " %";
+        dayFive.appendChild(day5Lst5);
+    })
+}
+
+
+
 
 
 function getValues(){

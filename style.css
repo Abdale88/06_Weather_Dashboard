@@ -35,3 +35,20 @@ body {
     color: white;
 }
 
+ section > ul{
+    
+   display: inline-block;
+   background-color: rgb(226, 192, 182);
+   /* color: white; */
+   border: blue 3px solid;
+   /* margin-left: rem */
+    
+}
+
+#forecastDay1{
+    margin-left: 15rem
+}
+
+#five-forecast{
+    margin-left: 15rem
+}
