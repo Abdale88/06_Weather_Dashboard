@@ -2,12 +2,22 @@ var searchEl = document.querySelector("#search");
 var cityName = document.querySelector("#input-field");
 var stateName = document.querySelector("#states");
 
+//these are the current day variables
 var containerEl = document.querySelector("#container")
 var cityEl = document.querySelector("#cityName");
 var tempEl = document.querySelector("#temp");
 var windEl = document.querySelector("#wind");
 var humidityEl = document.querySelector("#humidity");
 var uvIndex = document.querySelector("#uvi");
+
+//these are five day forecast variables
+var fiveDayForecast = document.querySelector("#five-forecast"); 
+var dayOne = document.querySelector("#forecastDay1"); 
+var dayTwo = document.querySelector("#forecastDay2"); 
+var dayThree = document.querySelector("#forecastDay3"); 
+var dayFour = document.querySelector("#forecastDay4"); 
+var dayFive = document.querySelector("#forecastDay5"); 
+
 
 var savedCities = [];
 var localStorageEl;
@@ -85,10 +95,50 @@ function getValues(){
 }
 
 
+function getData(){
+    
+    stateName.addEventListener("click", function(event){
+        var target = event.target.textContent;
+        console.log("text target <> ", target)
+        for(i = 0; i < savedCities.length; i++){
+            if(target === savedCities[i]){
+                console.log("check this out <> ", savedCities[i]);
+                fetch("https://api.openweathermap.org/data/2.5/weather?q="+ target + "&units=imperial"+"&appid=b47242be396209257701a75398843e35")
+                .then(function(response){
+                 return response.json();
+                })
+                .then(function(data){
+                 console.log("this is  current data ", data);
+
+                 var latitude = data.coord.lat;
+                 var longitude = data.coord.lon
+         
+                 console.log('LAT ', latitude);
+                 console.log('LOG', longitude);
+                 
+                 fetch("https://api.openweathermap.org/data/2.5/onecall?lat="+ latitude+ "&lon="+ longitude+ "&include=time&appid=b47242be396209257701a75398843e35")
+                 .then(function(res){
+                     return res.json();
+                 })
+                 .then(function(rawData){
+                     console.log("datas >> ", rawData);
+         
+                     containerEl.setAttribute("style", "padding-right: 50%; margin: 10px; border: black 3px solid");
+                     cityEl.textContent = data.name + " " + data.weather[0].icon;
+                     tempEl.textContent = "Temp: " + data.main.temp + " °F";
+                     humidityEl.textContent = "Humidity: " + data.main.humidity + " %";
+                     windEl.textContent = "Wind: " + data.wind.speed + " MPH";
+                     uvIndex.textContent = "UV Index: " + rawData.current.uvi;
+                 })
+                  })
+            }
+        }
+        
+     })
+}
 
 
-
-
+getData();
 getValues();
 mainFunction();
 
