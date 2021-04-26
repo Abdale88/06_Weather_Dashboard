@@ -86,15 +86,15 @@ function currentCity(){
         
             if(rawData.current.uvi <= 2){
                 uvIndex.textContent =  rawData.current.uvi;
-                uvIndex.setAttribute("style", "background-color: green; color: white; border-radius: 1.5rem;  margin-left: 0.5rem");
+                uvIndex.setAttribute("style", "background-color: green; border-radius: 1.5rem;  margin-left: 0.5rem");
             }
             else if(rawData.current.uvi <= 7){
                 uvIndex.textContent =  rawData.current.uvi;
-                uvIndex.setAttribute("style", "background-color: yellow; color: white; border-radius: 1.5rem;  margin-left: 0.5rem");
+                uvIndex.setAttribute("style", "background-color: yellow; border-radius: 1.5rem;  margin-left: 0.5rem");
             }
             else if(rawData.current.uvi >= 8){
                 uvIndex.textContent =  rawData.current.uvi;
-                uvIndex.setAttribute("style", "background-color: red; color: white; border-radius: 1.5rem;  margin-left: 0.5rem");
+                uvIndex.setAttribute("style", "background-color: red; border-radius: 1.5rem;  margin-left: 0.5rem");
             }
             
         }) 
@@ -271,15 +271,15 @@ function getData(){
                     
                      if(rawData.current.uvi <= 2){
                         uvIndex.textContent =  rawData.current.uvi;
-                        uvIndex.setAttribute("style", "background-color: green; color: white; border-radius: 1.5rem;  margin-left: 0.5rem");
+                        uvIndex.setAttribute("style", "background-color: green; border-radius: 1.5rem;  margin-left: 0.5rem");
                     }
                     else if(rawData.current.uvi <= 7){
                         uvIndex.textContent =  rawData.current.uvi;
-                        uvIndex.setAttribute("style", "background-color: yellow; color: white; border-radius: 1.5rem;  margin-left: 0.5rem");
+                        uvIndex.setAttribute("style", "background-color: yellow; border-radius: 1.5rem;  margin-left: 0.5rem");
                     }
                     else if(rawData.current.uvi >= 8){
                         uvIndex.textContent =  rawData.current.uvi;
-                        uvIndex.setAttribute("style", "background-color: red; color: white; border-radius: 1.5rem;  margin-left: 0.5rem");
+                        uvIndex.setAttribute("style", "background-color: red; border-radius: 1.5rem;  margin-left: 0.5rem");
                     }
 
 
