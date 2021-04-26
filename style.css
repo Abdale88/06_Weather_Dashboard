@@ -52,3 +52,11 @@ body {
 #five-forecast{
     margin-left: 15rem
 }
+
+#uv-index, #uvi {
+     display: inline-block;
+  }
+
+  /* #uv-index{
+      padding-right: 3rem;
+  } */

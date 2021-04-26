@@ -9,6 +9,7 @@ var tempEl = document.querySelector("#temp");
 var windEl = document.querySelector("#wind");
 var humidityEl = document.querySelector("#humidity");
 var uvIndex = document.querySelector("#uvi");
+var uviContainer = document.querySelector("#uv-index")
 
 //these are five day forecast variables
 var fiveDayForecast = document.querySelector("#five-forecast"); 
@@ -29,10 +30,6 @@ const month = date.getMonth();
 const today = date.getDate();
 
 const todaysDate = month + "/" + today + "/" + year
-
-console.log("year ", year);
-console.log("month ", month);
-console.log("today ", today);
 
 
 
@@ -86,17 +83,25 @@ function currentCity(){
             tempEl.textContent = "Temp: " + data.main.temp + " °F";
             humidityEl.textContent = "Humidity: " + data.main.humidity + " %";
             windEl.textContent = "Wind: " + data.wind.speed + " MPH";
-            uvIndex.textContent = "UV Index: " + rawData.current.uvi;
+        
+            if(rawData.current.uvi <= 2){
+                uvIndex.textContent =  rawData.current.uvi;
+                uvIndex.setAttribute("style", "background-color: green; color: white; border-radius: 1.5rem;  margin-left: 0.5rem");
+            }
+            else if(rawData.current.uvi <= 7){
+                uvIndex.textContent =  rawData.current.uvi;
+                uvIndex.setAttribute("style", "background-color: yellow; margin-left: 30px");
+            }
+            else if(rawData.current.uvi >= 8){
+                uvIndex.textContent =  rawData.current.uvi;
+                uvIndex.setAttribute("style", "background-color: red");
+            }
+            
         }) 
     })
    
     
 }
-
-
-
-
-
 
 
 function getValues(){
@@ -263,7 +268,19 @@ function getData(){
                      tempEl.textContent = "Temp: " + data.main.temp + " °F";
                      humidityEl.textContent = "Humidity: " + data.main.humidity + " %";
                      windEl.textContent = "Wind: " + data.wind.speed + " MPH";
-                     uvIndex.textContent = "UV Index: " + rawData.current.uvi;
+                    
+                     if(rawData.current.uvi <= 2){
+                        uvIndex.textContent =  rawData.current.uvi;
+                        uvIndex.setAttribute("style", "background-color: green; color: white; border-radius: 1.5rem;  margin-left: 0.5rem");
+                    }
+                    else if(rawData.current.uvi <= 7){
+                        uvIndex.textContent =  rawData.current.uvi;
+                        uvIndex.setAttribute("style", "background-color: yellow; margin-left: 30px");
+                    }
+                    else if(rawData.current.uvi >= 8){
+                        uvIndex.textContent =  rawData.current.uvi;
+                        uvIndex.setAttribute("style", "background-color: red");
+                    }
 
 
                      
