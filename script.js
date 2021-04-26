@@ -90,11 +90,11 @@ function currentCity(){
             }
             else if(rawData.current.uvi <= 7){
                 uvIndex.textContent =  rawData.current.uvi;
-                uvIndex.setAttribute("style", "background-color: yellow; margin-left: 30px");
+                uvIndex.setAttribute("style", "background-color: yellow; color: white; border-radius: 1.5rem;  margin-left: 0.5rem");
             }
             else if(rawData.current.uvi >= 8){
                 uvIndex.textContent =  rawData.current.uvi;
-                uvIndex.setAttribute("style", "background-color: red");
+                uvIndex.setAttribute("style", "background-color: red; color: white; border-radius: 1.5rem;  margin-left: 0.5rem");
             }
             
         }) 
@@ -275,11 +275,11 @@ function getData(){
                     }
                     else if(rawData.current.uvi <= 7){
                         uvIndex.textContent =  rawData.current.uvi;
-                        uvIndex.setAttribute("style", "background-color: yellow; margin-left: 30px");
+                        uvIndex.setAttribute("style", "background-color: yellow; color: white; border-radius: 1.5rem;  margin-left: 0.5rem");
                     }
                     else if(rawData.current.uvi >= 8){
                         uvIndex.textContent =  rawData.current.uvi;
-                        uvIndex.setAttribute("style", "background-color: red");
+                        uvIndex.setAttribute("style", "background-color: red; color: white; border-radius: 1.5rem;  margin-left: 0.5rem");
                     }
 
 
