@@ -19,7 +19,6 @@ var dayFour = document.querySelector("#forecastDay4");
 var dayFive = document.querySelector("#forecastDay5"); 
 
 
-var savedCities = [];
 var localStorageEl;
 
 var results;
@@ -100,6 +99,7 @@ function getValues(){
     }
 }
 
+function cityObjFunc(){}
 
 function fiveDayFunc(){
     fetch("https://api.openweathermap.org/data/2.5/forecast?q="+ cityName.value + "&units=imperial"+"&appid=b47242be396209257701a75398843e35&cnt=6")
@@ -205,16 +205,16 @@ function fiveDayFunc(){
 
         day5Lst1.textContent = "Time: " + data.list[5].dt_txt;
         dayFive.appendChild(day5Lst1);
-        day5Lst2.textContent = "icon: " + data.list[4].weather[0].icon;
+        day5Lst2.textContent = "icon: " + data.list[5].weather[0].icon;
         dayFive.appendChild(day5Lst2);
 
-        day5Lst3.textContent = "Temp: " + data.list[4].main.temp + " °F";
+        day5Lst3.textContent = "Temp: " + data.list[5].main.temp + " °F";
         dayFive.appendChild(day5Lst3);
 
-        day5Lst4.textContent = "Wind: " + data.list[4].wind.speed + " MPH";
+        day5Lst4.textContent = "Wind: " + data.list[5].wind.speed + " MPH";
         dayFive.appendChild(day5Lst4);
 
-        day5Lst5.textContent = "Humidity: " + data.list[4].main.humidity + " %";
+        day5Lst5.textContent = "Humidity: " + data.list[5].main.humidity + " %";
         dayFive.appendChild(day5Lst5);
     })
 }
